@@ -6,13 +6,13 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.render('game');
 });
 
-app.set('views', './views');
 app.set('view engine', 'ejs');
+app.set('views', './views');
 
-app.use('/hash-game', express.static(__dirname + '/public'));
+app.use('/hash-game', express.static(__dirname + '/views'));
 
 server.listen(3000, () => {
   console.log('listening on *:3000');
