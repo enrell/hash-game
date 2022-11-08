@@ -6,44 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hash Game</title>
 <body>
-    <h1>hello</h1>
+    <header>
+        <h1>hello</h1>
+    </header>
     <main>
+        
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
     </script>
 
         <div class="main-block">
-            <div id="block-1" class="blocks"></div>
-            <div id="block-2" class="blocks"></div>
-            <div id="block-3" class="blocks"></div>
-            <div id="block-4" class="blocks"></div>
-            <div id="block-5" class="blocks"></div>
-            <div id="block-6" class="blocks"></div>
-            <div id="block-7" class="blocks"></div>
-            <div id="block-8" class="blocks"></div>
-            <div id="block-9" class="blocks"></div>
+            <div class="blocks-row-1">
+                <div id="block-1" class="blocks "></div>
+                <div id="block-2" class="blocks"></div>
+                <div id="block-3" class="blocks"></div>
+             </div>
+            <div class="blocks-row-2">
+                <div id="block-4" class="blocks"></div>
+                <div id="block-5" class="blocks"></div>
+                <div id="block-6" class="blocks"></div>
+            </div>
+            <div class="blocks-row-3">
+                <div id="block-7" class="blocks"></div>
+                <div id="block-8" class="blocks"></div>
+                <div id="block-9" class="blocks"></div>
+            </div>
+            
         </div>
         
     </main>
 
 <style>
+
+* {margin: 0; padding: 0;}
 main {
-    margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .main-block {
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
 }
 .blocks {
-    display: block;
+    display: flex;
     border: 0.4vh solid black;
-    width: 50vh;
-    height: 50vh;
+    width: 20vh;
+    height: 20vh;
 }
+.blocks-row-1 {display: flex; flex-direction: column; align-items: flex-start;}
+.blocks-row-2 {display: flex; flex-direction: column; align-items: center;}
+.blocks-row-3 {display: flex; flex-direction: column; align-items: center;}
+
 </style>
 </body>
 </html>
