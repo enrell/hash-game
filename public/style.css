@@ -1,0 +1,36 @@
+* {margin: 0; padding: 0;}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.main-square {
+    display: flex;
+    border: 0.8vh solid black;
+}
+.square {
+    display: flex;
+    border-bottom: 0.3vh solid black;
+    width: 25vh;
+    height: 25vh;
+}
+.square-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.3vh solid black;
+}
+
+.x {
+    width: 90%;
+    height: 90%;
+    margin-left: 1vh;
+    margin-top: 1vh;
+}
+
+.o {
+    width: 25vh;
+}

@@ -5,12 +5,15 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+
 app.get('/', (req, res) => {
   res.render('game');
 });
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(express.static('public'));
 
 app.use('/hash-game', express.static(__dirname + '/views'));
 
