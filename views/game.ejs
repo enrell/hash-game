@@ -6,37 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hash Game</title>
     <link rel="stylesheet" href="style.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        
-    </header>
+    <%- include('./components/header.ejs'); %>
     <main>
         
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
+
     </script>
     <script>
-        players: {
-            name: ""
-        }
-        let o;
-        let x;
-        let winner;
+        //
     </script>
 
         <div class="main-square">
             <div class="blocks-row">
                 <div id="square-1" class="square" onclick="">
-                    <% 
-                        if (player == x) {
-                            
-                        }
-                        if (player == o) {
-                            
-                        }
-                     %>
+                    <%  %>
                     
                 </div>
                 <div id="square-2" class="square"><img class="o" src="circle.svg"></div>
