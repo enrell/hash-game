@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
     io.emit('message', msg);
   });
 });
+
 io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
 
 

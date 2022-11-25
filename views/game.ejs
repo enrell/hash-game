@@ -17,17 +17,19 @@
         var socket = io();
 
     </script>
-    <script>
-        //
-    </script>
+    <!-- <script>
+        function myFunction(e) {
+        var img = '<img class="o" src="circle.svg">';
+        // document.getElementById('square-1').innerHTML = (img);
+        e.target.innerHTML = (img);
+        }
+    </script> -->
 
         <div class="main-square">
             <div class="blocks-row">
-                <div id="square-1" class="square" onclick="">
-                    <%  %>
-                    
+                <div id="square-1" class="square" onclick="myFunction()">
                 </div>
-                <div id="square-2" class="square"><img class="o" src="circle.svg"></div>
+                <div id="square-2" class="square"></div>
                 <div id="square-3" class="square"></div>
              </div>
             <div class="square-row">
@@ -42,6 +44,12 @@
             </div>
             
         </div>
+        <!-- <script>
+            let squares = Array.from(document.querySelectorAll('.square'))
+            for (let i = 0;){
+                square.addEventListencer('click', myFunction)
+            }
+        </script> -->
     </main>
 
 </body>
