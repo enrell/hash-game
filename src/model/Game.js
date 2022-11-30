@@ -35,4 +35,4 @@ class Game {
     this._player2 = player2;
   }
 }
-
+module.exports = Game;

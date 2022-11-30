@@ -1,10 +1,9 @@
-import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-import { App } from '../../views/signup.ejs'
+const { createApp } = Vue;
 
-const app = createApp(App, {
+const app = createApp({
   data() {
     return {
-      message: '',
+      message: 'Hello',
       socket: null,
       game: null,
       playerName: null,
@@ -35,18 +34,20 @@ const app = createApp(App, {
   mounted(){
     this.socket = io.connect(window.location.origin);
     const bckp = this;
+
     this.socket.on("game.start", function(data){
-      bckp.game = data;
-      const myPlayer = data._player1._socketID;
-    
-      if (bckp.data.socket.id == myPlayer){
-        myPlayer = data._player1;
-      }else {
-        myPlayer = data._player2;
-      }
-      bckp.turn = myPlayer._turn;
-      bckp.myTurn = data._turnOf == bckp.turn;
-    });    
-  }
-})
-app.mount('#app')
+
+    bckp.game = data;
+    const myPlayer = data._player1._socketID;
+      
+    if (bckp.data.socket.id == myPlayer){
+      myPlayer = data._player1;
+    }else {
+      myPlayer = data._player2;
+    }
+    bckp.turn = myPlayer._turn;
+    bckp.myTurn = data._turnOf == bckp.turn;
+
+    });   
+  },
+});app.mount("#app");

@@ -5,8 +5,9 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const uuid = require("uuid");
-const { Player } = require("./src/model/Player");
-const { Game } = require("./src/model/Game");
+const Player = require("./src/model/Player");
+const Game = require("./src/model/Game");
+const Board = require("./src/model/Board");
 // -----------------------------
 // Express server
 
@@ -54,6 +55,7 @@ io.on('connection', (socket) => {
 
 const join = (socket, data) => {
   const player = new Player(data.playerName, "x", socket.id);
+  console.log(player);
 
   if (matchs){ // if player1 is waiting, assign the player2 and set matchs to games object
     matchs.player2 = player;

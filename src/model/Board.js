@@ -25,3 +25,4 @@ class Board {
     this._squares.forEach((squares) => (squares.turn = null));
   }
 }
+module.exports = Board;
