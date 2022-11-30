@@ -9,15 +9,15 @@
 </head>
 <body>
     <main>
-      <div id="#app">
-        <div class="signup" v-if="!game $$ !gameVerify">
-          <input type="text" v-model="playerName" placeholder="Name">
-          <button @click="start()" class="btn">Play</button>
+      <template>
+        <div id='app'>
+          <input class="signup" v-model="playerName" aria-placeholder="Name">
+          <button @click="start" class="btn">play</button>      
         </div>
-      </div>
-        
+      </template>
+      
         <script src="/socket.io/socket.io.js"></script>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="/js/Client.js"></script>
+        <script type="module" src="/js/Client.js"></script>
       </main>
 </body>
+</html>
