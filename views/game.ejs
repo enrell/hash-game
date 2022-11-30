@@ -6,29 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hash Game</title>
     <link rel="stylesheet" href="style.css">
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
-    <%- include('./components/header.ejs'); %>
+    <%- //include('./components/header.ejs'); %>
     <main>
-        
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-
-    </script>
-    <!-- <script>
-        function myFunction(e) {
-        var img = '<img class="o" src="circle.svg">';
-        // document.getElementById('square-1').innerHTML = (img);
-        e.target.innerHTML = (img);
-        }
-    </script> -->
 
         <div class="main-square">
-            <div class="blocks-row">
-                <div id="square-1" class="square" onclick="myFunction()">
-                </div>
+            <div class="square-row">
+                <div id="square-1" class="square"></div>
                 <div id="square-2" class="square"></div>
                 <div id="square-3" class="square"></div>
              </div>
@@ -42,14 +28,11 @@
                 <div id="square-8" class="square"></div>
                 <div id="square-9" class="square"></div>
             </div>
-            
         </div>
-        <!-- <script>
-            let squares = Array.from(document.querySelectorAll('.square'))
-            for (let i = 0;){
-                square.addEventListencer('click', myFunction)
-            }
-        </script> -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="/js/Client.js"></script>
+
     </main>
 
 </body>

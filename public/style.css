@@ -9,19 +9,25 @@ main {
 
 .main-square {
     display: flex;
-    border: 0.8vh solid black;
 }
 .square {
     display: flex;
-    border-bottom: 0.3vh solid black;
     width: 25vh;
     height: 25vh;
 }
+#square-1 {border-bottom: 0.4vh solid black;border-right: 0.4vh solid black;}
+#square-2 {border-bottom: 0.4vh solid black;border-right: 0.4vh solid black;}
+#square-3 {border-right: 0.4vh solid black;}
+#square-4 {border-bottom: 0.4vh solid black;border-right: 0.4vh solid black;}
+#square-5 {border-bottom: 0.4vh solid black;border-right: 0.4vh solid black;}
+#square-6 {border-right: 0.4vh solid black;}
+#square-7 {border-bottom: 0.4vh solid black;}
+#square-8 {border-bottom: 0.4vh solid black;}
+
 .square-row {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 0.3vh solid black;
 }
 
 .x {
