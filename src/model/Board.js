@@ -1,5 +1,5 @@
 class Board {
-  constructor(){
+  constructor() {
     this._squares = [
       { turn: null },
       { turn: null },
@@ -12,16 +12,16 @@ class Board {
       { turn: null }
     ];
   }
-  get squares(){
+  get squares() {
     return this._squares;
   }
-  getSquares(i){
+  getSquares(i) {
     return this._squares(i);
   }
-  setSquares(i, turn){
-    this._squares[i].turn = turn; // Store turn in square[index]
+  setSquares(i, sTurn) {
+    this._squares[i].turn = sTurn; // Store turn in square[index]
   }
-  reset(){
+  reset() {
     this._squares.forEach((squares) => (squares.turn = null));
   }
 }

@@ -1,7 +1,7 @@
 const Board = require( "./Board");
 
 class Game {
-  constructor(player1){
+  constructor(player1) {
     this._player1 = player1;
     this._player2 = null;
     this._board = new Board();
@@ -9,30 +9,29 @@ class Game {
     this._gameover = null;
     this._turn = "x";
   }
-  get player1(){
+  get player1() {
     return this._player1;
   }
-  get player2(){
+  get player2() {
     return this._player2;
   }
-  get board(){
+  get board() {
     return this._board;
   }
-  get gameover(){
+  get gameover() {
     return this._gameover;
   }
-  turnChange(){
-    let change = this._turn;
-
-    if (change == "x"){
-      change = "o";
-    }else {
-      change = "x"
-    }
-  }
-  set player2(player2){
-    player2.turn = "o";
+  set player2(player2) {
+    player2._turn = "o";
     this._player2 = player2;
   }
+  turnChange() {
+    if (this._turn == "x") {
+      this._turn = "o";
+    }else {
+      this._turn = "x"
+    }
+  }
+  
 }
 module.exports = Game;

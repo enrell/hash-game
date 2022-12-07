@@ -12,14 +12,14 @@ const Board = require("./src/model/Board");
 // Express server
 
 app.get('/', (req, res) => {
-  res.render('signup');
+  res.render('game');
 });
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use(express.static('public'));
-// app.use('/vendor', express.static('./node_modules'));
+app.use('/vendor', express.static('./node_modules'));
 
 app.use('/hash-game', express.static(__dirname + '/views'));
 
@@ -49,9 +49,11 @@ io.on('connection', (socket) => {
 
   socket.on("make.play", function(data) {
     const game = games[socket.id];
-    game.board.setSquares(data.i, data.turn);
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","DATA TURN: ", data.turn,"DATA I: ", data.index);
+    game.board.setSquares(data.index, data.turn);
 
     game.turnChange();
+    
     const action = "play";
     clients[game.player1.socketID].emit(action, game);
     clients[game.player2.socketID].emit(action, game);

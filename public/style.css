@@ -10,7 +10,7 @@ main {
     width: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
-    background-image: url("pngwing.com.png");
+    /* background-image: url("pngwing.com.png"); */
 }
 .board button {
     background-color: transparent;
@@ -23,6 +23,6 @@ main {
 }
 
 .square-o {
-    background-image: url("x.svg");
+    background-image: url("circle.svg");
 }
 
