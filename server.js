@@ -33,22 +33,45 @@ const games = {};
 let matchs = null;
 
 io.on('connection', (socket) => {
-  let id = socket.id;
+  const id = socket.id;
   console.log('user ', 'connected', id);
   clients[id] = socket;
 
-  socket.on("game.start", function(data){
+  socket.on("game.start", function(data) {
     const game = join(socket, data);
-    if (game.player2){
+    if (game.player2) {
       console.log("Game Start! ", game);
       // Emit event for client
       clients[game.player1.socketID].emit("game.start", game);
-      clients[game.player1.socketID].emit("game.start", game);
+      clients[game.player2.socketID].emit("game.start", game);
     }
   });
 
-  socket.on('disconnect', () => {
+  socket.on("make.play", function(data) {
+    const game = games[socket.id];
+    game.board.setSquares(data.i, data.turn);
+
+    game.turnChange();
+    const action = "play";
+    clients[game.player1.socketID].emit(action, game);
+    clients[game.player2.socketID].emit(action, game);
+
+  });
+
+  socket.on('disconnect', function() {
     console.log('user ', 'disconected', id);
+    const game = games[socket.id];
+    
+    if (game) {
+      const socketEmit = game.player1.socketID == socket.id ? clients[game.player2.socketID] : clients[game.player2.socketID];
+      const exit = "player.exit";
+      
+      if (socketEmit) {
+        socketEmit.emit(exit);
+      }
+      delete games[socket.id];
+      delete games[socketEmit.id];
+    }
     delete clients[id];
   });
 });
@@ -57,12 +80,12 @@ const join = (socket, data) => {
   const player = new Player(data.playerName, "x", socket.id);
   console.log(player);
 
-  if (matchs){ // if player1 is waiting, assign the player2 and set matchs to games object
+  if (matchs) { // if player1 is waiting, assign the player2 and set matchs to games object
     matchs.player2 = player;
     games[matchs.player1.socketID] = matchs;
-    games[match.player2.socketID] = matchs;
+    games[matchs.player2.socketID] = matchs;
     matchs = null;
-    return games[socket.id]
+    return games[socket.id];
   }else {
     matchs = new Game(player); // else, create new game with constant player1
     return matchs;

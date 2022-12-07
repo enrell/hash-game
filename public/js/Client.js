@@ -3,14 +3,13 @@ const { createApp } = Vue;
 const app = createApp({
   data() {
     return {
-      message: 'Hello',
+      message: '',
       socket: null,
       game: null,
       playerName: null,
       myTurn: null,
       gameVerify: false,
       turn: null,
-
     }
   },
   methods: {
@@ -21,33 +20,51 @@ const app = createApp({
       playerName: this.playerName,
       });
     },
-    messageAlert() {
-      this.message = this.myTurn;
-
-      if(this.message == this.myTurn){
-        console.log("Play!");
-      }else{
-        console.log("Wait oponnent play!");
+    plays(squares) {
+      console.log(squares);
+      if (!this.myTurn || squares.turn != null){
+        return;
+      }else {
+        this.socket.emit("make.play", {
+          turn: this.turn,
+          index: this.game._board._squares.indexOf(squares),
+        });
       }
     },
+    messageAlert() {
+      this.message = this.myTurn ? "Play!" : "Wait opponent!";
+      }
   },
   mounted(){
     this.socket = io.connect(window.location.origin);
-    const bckp = this;
+    const self = this;
 
     this.socket.on("game.start", function(data){
 
-    bckp.game = data;
+    self.game = data;
     const myPlayer = data._player1._socketID;
       
-    if (bckp.data.socket.id == myPlayer){
+    if (myPlayer == self.socket.id){
       myPlayer = data._player1;
     }else {
       myPlayer = data._player2;
     }
-    bckp.turn = myPlayer._turn;
-    bckp.myTurn = data._turnOf == bckp.turn;
+    self.turn = myPlayer._turn;
+    self.myTurn = data._turnOf == self.turn;
+    self.messageAlert();
+    });
 
-    });   
+    this.socket.on("move.made", (data) => {
+      self.game = data;
+      self.myTurn = data._turnOf == self.turn;
+      messageAlert();
+    });
+    
+    this.socket.on("player.exit", function() {
+      self.message = "Opponent exit";
+      self.game = null;
+      self.gameVerify = false;
+    });
+
   },
 });app.mount("#app");

@@ -9,13 +9,46 @@
 </head>
 <body>
     <main>
+      <div id="app">
+        <div class="container" v-if="game">
+          <p>{{ game._player1._name }}</p>
+          <p>{{ game._player2._name }}</p>
+          <p>{{ message }}</p>
 
-        <div id='app'>
-          <input class="signup" v-model="playerName" aria-placeholder="Name">
-          <button @click="start()" class="btn">play</button>      
+          <div class="board">
+            <button v-for="squares in game._board._squares" @click="plays(squares)" :class="{'square-x': squares.turn == 'x', 'square-o': squares.turn == 'o'}">
+              {{ squares.turn }}
+            </button>
+          </div>
+          
         </div>
-      
-      </main>
+
+        <div class="signup" v-if="!game && !gameVerify">
+          <input class="signup" v-model="playerName" aria-placeholder="Name">
+          <button @click="start()" class="btn">play</button>  
+        </div>
+      </div>
+<!--           
+        </div>
+        <div class="main-square">
+          <div class="square-row">
+              <div id="square-1" class="square"></div>
+              <div id="square-2" class="square"></div>
+              <div id="square-3" class="square"></div>
+           </div>
+          <div class="square-row">
+              <div id="square-4" class="square"></div>
+              <div id="square-5" class="square"></div>
+              <div id="square-6" class="square"></div>
+          </div>
+          <div class="square-row">
+              <div id="square-7" class="square"></div>
+              <div id="square-8" class="square"></div>
+              <div id="square-9" class="square"></div>
+          </div>
+      </div>
+         -->
+    </main>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
