@@ -25,6 +25,17 @@ class Game {
     player2._turn = "o";
     this._player2 = player2;
   }
+  // checkWL() {
+  //   const squares = this._board._squares;
+  //   for (let i = 0; i < squares.length; i++) {
+  //     const self = squares._turn;
+  //     if (self[0] == x && self[1] == x && self[2] == x) {
+  //       if (this._player1.socketID) {
+
+  //       }
+  //     }
+  //   }
+  // }
   turnChange() {
     if (this._turn == "x") {
       this._turn = "o";

@@ -49,10 +49,11 @@ io.on('connection', (socket) => {
 
   socket.on("make.play", function(data) {
     const game = games[socket.id];
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","DATA TURN: ", data.turn,"DATA I: ", data.index);
+    console.log("Turns: ","TURN: ", data.turn,"Index: ", data.index);
     game.board.setSquares(data.index, data.turn);
 
     game.turnChange();
+    // game.checkWL(data);
     
     const action = "play";
     clients[game.player1.socketID].emit(action, game);
@@ -65,7 +66,9 @@ io.on('connection', (socket) => {
     const game = games[socket.id];
     
     if (game) {
-      const socketEmit = game.player1.socketID == socket.id ? clients[game.player2.socketID] : clients[game.player2.socketID];
+      const socketEmit = game.player1.socketID == socket.id 
+      ? clients[game.player2.socketID] 
+      : clients[game.player1.socketID];
       const exit = "player.exit";
       
       if (socketEmit) {
