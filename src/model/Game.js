@@ -18,24 +18,20 @@ class Game {
   get board() {
     return this._board;
   }
-  get gameover() {
+  getGameover() {
     return this._gameover;
   }
   set player2(player2) {
     player2._turn = "o";
     this._player2 = player2;
   }
-  // checkWL() {
-  //   const squares = this._board._squares;
-  //   for (let i = 0; i < squares.length; i++) {
-  //     const self = squares._turn;
-  //     if (self[0] == x && self[1] == x && self[2] == x) {
-  //       if (this._player1.socketID) {
-
-  //       }
-  //     }
-  //   }
-  // }
+  checkWinLose(i, t) {
+    this._board._squares[i].turn = t;
+      if (this._board._squares[0].turn == "x") {
+        console.log("x win");
+        
+      }
+  }
   turnChange() {
     if (this._turn == "x") {
       this._turn = "o";

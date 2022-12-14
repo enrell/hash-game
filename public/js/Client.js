@@ -34,7 +34,7 @@ const app = createApp({
     this.socket.on("play", (data) => {
       self.game = data;
       self.myTurn = data._turn == self.turn;
-      messageAlert();
+      self.messageAlert();
     });
     
     this.socket.on("player.exit", function() {

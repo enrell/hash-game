@@ -50,10 +50,13 @@ io.on('connection', (socket) => {
   socket.on("make.play", function(data) {
     const game = games[socket.id];
     console.log("Turns: ","TURN: ", data.turn,"Index: ", data.index);
+
     game.board.setSquares(data.index, data.turn);
 
+    game.checkWinLose(data.index, data.turn);
+
     game.turnChange();
-    // game.checkWL(data);
+   
     
     const action = "play";
     clients[game.player1.socketID].emit(action, game);
