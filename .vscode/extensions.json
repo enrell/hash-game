@@ -1,8 +1,11 @@
 {
-  "recommendations": [
-    "pkief.material-icon-theme",
-    "esbenp.prettier-vscode",
-    "naumovs.color-highlight",
-    "GitHub.github-vscode-theme"
-  ]
+  "recommendations": 
+  [
+  "Vue.volar", 
+  "Vue.vscode-typescript-vue-plugin",
+  "pkief.material-icon-theme",
+  "esbenp.prettier-vscode",
+  "naumovs.color-highlight",
+  "GitHub.github-vscode-theme"
+ ]
 }

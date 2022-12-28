@@ -1,5 +1,5 @@
 class Player {
-  constructor(name, turn, socketID){
+  constructor(name, turn, socketID) {
     this._name = name;
     this._turn = turn;
     this._socketID = socketID;
@@ -13,9 +13,9 @@ class Player {
   get socketID() {
     return this._socketID;
   }
-  set turn(turn){
+  set turn(turn) {
     this._turn = turn;
   }
 }
 
-module.exports = Player;
+export default Player;
